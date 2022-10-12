@@ -1,8 +1,8 @@
 require("dotenv").config();
-const { sendPost, searchUser} = require("./postMessage");
-const {sendMailbot} = require("./mailer");
-const {authorize} = require("./googleAuth");
-const spreadsheet = require("./spreadsheet");
+const { sendPost, searchUser} = require("./APIs/postMessage");
+const {sendMailbot} = require("./APIs/mailer");
+const {authorize} = require("./utils/googleAuth");
+const spreadsheet = require("./APIs/spreadsheet");
 
 async function sentinel() {
   const auth = await authorize();

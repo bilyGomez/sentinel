@@ -1,5 +1,5 @@
 const nodeMailer = require("nodemailer");
-const {oAuth2GetAccessToken} = require("./googleAuth");
+const {oAuth2GetAccessToken} = require("../utils/googleAuth");
 
 const sendMailbot = async (to, subject, text) =>{
     

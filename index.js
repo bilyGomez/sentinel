@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { sendPost, searchUser} = require("./postMessage");
 const {sendMailbot} = require("./mailer");
-const authorize = require("./googleAuth");
+const {authorize} = require("./googleAuth");
 const spreadsheet = require("./spreadsheet");
 
 async function sentinel() {

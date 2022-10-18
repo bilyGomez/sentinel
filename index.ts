@@ -1,8 +1,23 @@
-require("dotenv").config();
-const { sendPost, searchUser} = require("./APIs/postMessage");
-const {sendMailbot} = require("./APIs/mailer");
-const {authorize} = require("./utils/googleAuth");
-const spreadsheet = require("./APIs/spreadsheet");
+//require("dotenv").config();
+import * as dotenv from "dotenv"
+//const { sendPost, searchUser} = require("./APIs/postMessage");
+import { sendPost, searchUser} from "./APIs/postMessage";
+//const {sendMailbot} = require("./APIs/mailer");
+import { sendMailbot } from "./APIs/mailer";
+//const {authorize} = require("./utils/googleAuth");
+import { authorize } from "./utils/googleAuth";
+//const spreadsheet = require("./APIs/spreadsheet");
+import spreadsheet from "./APIs/spreadsheet";
+dotenv.config();
+
+
+interface Issue {
+  managerName:string;
+  managerEmail:string;
+  accounts: string[]
+}
+
+type Issues = Issue[];
 
 async function sentinel() {
   const auth = await authorize();
@@ -10,9 +25,10 @@ async function sentinel() {
 
   setInterval(async () =>{
     
-    const rows = await spreadsheet(auth, range);
+    const rows: string[][] = await spreadsheet(auth, range);
     //create an object of managers and its accounts
-    let issues = [];
+    let issues: Issues = [];
+    
     rows.map((account) => {
       if(account[2] === ""){
         

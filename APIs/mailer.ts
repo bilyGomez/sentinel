@@ -1,7 +1,9 @@
-const nodeMailer = require("nodemailer");
+//const nodeMailer = require("nodemailer");
+import nodeMailer from "nodemailer";
 const {oAuth2GetAccessToken} = require("../utils/googleAuth");
 
-const sendMailbot = async (to, subject, text) =>{
+
+export const sendMailbot = async (to:string, subject: string, text: string) =>{
     
     const CLIENT_EMAIL = process.env.APP_EMAIL; //your email from where you'll be sending emails to users
     const CLIENT_ID = process.env.APP_EMAIL_CLIENT_ID; // Client ID generated on Google console cloud
@@ -39,4 +41,4 @@ const sendMailbot = async (to, subject, text) =>{
     }
 
 }
-module.exports = {sendMailbot};
+//module.exports = {sendMailbot};
